@@ -1,0 +1,149 @@
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 60px 80px;
+  gap: 40px;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.role-btn {
+  border: 1px solid #1865f2;
+  color: #1865f2;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.role-btn:hover {
+  background: #1865f2;
+  color: #fff;
+}
+
+/* EXPLORE DARK */
+.explore-dark {
+  background: #0b214a;
+  color: #fff;
+  margin: 40px auto;
+  padding: 40px;
+  max-width: 1100px;
+  border-radius: 8px;
+}
+
+.explore-dark h2 {
+  margin-bottom: 24px;
+}
+
+.explore-dark details {
+  margin-bottom: 12px;
+}
+
+.explore-dark summary {
+  font-weight: bold;
+}
+
+.explore-content {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+/* EFFECTIVENESS */
+.effectiveness {
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.effect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* TEACHER */
+.teacher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 60px 80px;
+}
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: #1865f2;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* LEARNER */
+.learner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 60px 80px;
+}
+
+/* QUOTE */
+.quote {
+  padding: 80px;
+  text-align: center;
+}
+
+.quote blockquote {
+  font-size: 24px;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+/* DONATION */
+.donation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 60px 80px;
+  background: #f5f7fb;
+}
+
+.donate-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  border: 1px solid #1865f2;
+  color: #1865f2;
+}
+
+.donate-btn:hover {
+  background: #1865f2;
+  color: #fff;
+}
+
+/* JOIN */
+.join {
+  padding: 80px;
+  text-align: center;
+}
+
+/* SPONSORS */
+.sponsors {
+  padding: 60px;
+  text-align: center;
+  font-family: "Georgia", serif;
+}
