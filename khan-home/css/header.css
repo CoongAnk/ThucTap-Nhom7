@@ -1,0 +1,95 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 12px 32px;
+}
+
+/* LEFT */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.explore-menu summary {
+  font-weight: 600;
+  color: #1865f2;
+}
+
+.explore-menu summary:hover {
+  text-decoration: underline;
+}
+
+.explore-menu .dropdown {
+  position: absolute;
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.explore-menu[open] .dropdown {
+  display: flex;
+}
+
+.explore-menu .dropdown a:hover {
+  text-decoration: underline;
+}
+
+.search {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 220px;
+}
+
+.search:focus {
+  outline: none;
+  border-color: #1865f2;
+}
+
+/* CENTER */
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* RIGHT */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right a:hover {
+  text-decoration: underline;
+}
+
+.signup-btn {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #1865f2;
+  color: #1865f2;
+}
+
+.signup-btn:hover {
+  background: #1865f2;
+  color: #fff;
+}
+
+.donate-link {
+  color: #1865f2;
+}
