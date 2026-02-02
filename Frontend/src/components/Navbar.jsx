@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 export default function Navbar() {
   return (
     <header className="site-header">
@@ -21,7 +24,7 @@ export default function Navbar() {
       </div>
 
       <div className="header-right">
-        <a href="#">Đăng nhập</a>
+        <Link to="/login">Đăng nhập</Link>
         <a href="#" className="signup-btn">Đăng ký</a>
         <a href="#" className="donate-link">Quyên góp</a>
       </div>
