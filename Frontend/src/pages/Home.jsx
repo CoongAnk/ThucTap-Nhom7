@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import '../styles/Home.css';
+
 const Home = () => {
   return (
     <main className="container">
