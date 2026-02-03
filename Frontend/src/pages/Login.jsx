@@ -1,92 +1,74 @@
+import React from "react";
 import { Link } from 'react-router-dom';
-import '../styles/Login.css';
+import "../styles/Login.css";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebookF, FaApple } from "react-icons/fa";
+import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
+import { BsMicrosoft } from "react-icons/bs";
 
-function Login() {
+export default function Login() {
   return (
-    <>
-      {/* ===== HEADER ===== */}
-      <header className="header">
-        <div className="header-container">
-          <div className="header-left">
-            <a href="#" className="explore">Explore ▾</a>
-            <input
-              type="text"
-              placeholder="Search"
-              className="search"
-            />
-          </div>
+    <div className="login-wrapper">
+      {/* LEFT */}
+      <div className="login-left">
+        <img
+          src="https://cdn.kastatic.org/images/lohp/hero_student_collage_IN_2x.png"
+          className="hero"
+          alt="hero"
+        />
 
-          <div className="logo">Khan Academy</div>
+        <h2>Did you know?</h2>
+        <p>
+          Mastering just one more skill everyday boosts your learning progress
+          tremendously.
+        </p>
+      </div>
 
-          <div className="header-right">
-            <a href="#">Donate</a>
-            <a href="#">Log in</a>
-            <a href="#" className="btn-signup">Sign up</a>
-          </div>
+      {/* RIGHT */}
+      <div className="login-box">
+        <h1>Log in now!</h1>
+
+        <button className="social google">
+          <FcGoogle size={22} />
+          Continue with Google
+        </button>
+
+        <div className="social-row">
+          <button className="square fb">
+            <FaFacebookF />
+          </button>
+
+          <button className="square apple">
+            <FaApple />
+          </button>
+
+          <button className="square ms">
+            <BsMicrosoft />
+          </button>
         </div>
-      </header>
 
-      {/* ===== MAIN ===== */}
-      <main className="main">
-        <div className="main-container">
-          {/* LEFT */}
-          <div className="left">
-            {/* ẢNH TỪ PUBLIC */}
-            <img
-              src="/images/hero-main.jpg"
-              alt="Learning"
-            />
+        <div className="divider">Or login with email</div>
 
-            <h3>Did you know?</h3>
-            <p>
-              Regardless of who you are, mastering even just one more
-              skill on Khan Academy results in learning gains.
-            </p>
-          </div>
-
-          {/* RIGHT */}
-          <div className="right">
-            <h2>Log in now!</h2>
-
-            <button className="btn-social google">
-              Continue with Google
-            </button>
-
-            <div className="divider">
-              <span>Or log in with email</span>
-            </div>
-
-            <form>
-              <label>
-                Email or username <span>required</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email@example.com"
-              />
-
-              <label>
-                Password <span>required</span>
-              </label>
-              <input type="password" />
-
-              <a href="#" className="forgot">
-                Forgot password?
-              </a>
-
-              <button className="btn-login" disabled>
-                Log in
-              </button>
-            </form>
-          </div>
+        {/* EMAIL */}
+        <div className="input-group">
+          <AiOutlineMail className="icon" />
+          <input placeholder="Email or username" />
         </div>
-      </main>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="footer">
-        <p>© 2026 Khan Academy Clone</p>
-      </footer>
-    </>
+        {/* PASSWORD */}
+        <div className="input-group">
+          <AiOutlineLock className="icon" />
+          <input type="password" placeholder="Password" />
+        </div>
+
+        <span className="forgot">Forgot password?</span>
+
+        <button className="login-btn">Log in</button>
+
+        <p className="signup">
+          Need an account? <span>Sign up</span>
+        </p>
+      </div>
+    </div>
   );
 }
-export default Login;
