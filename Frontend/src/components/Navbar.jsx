@@ -25,7 +25,7 @@ export default function Navbar() {
 
       <div className="header-right">
         <Link to="/login">Đăng nhập</Link>
-        <a href="#" className="signup-btn">Đăng ký</a>
+        <Link to="/signup" className="signup-btn">Đăng ký</Link>
         <a href="#" className="donate-link">Quyên góp</a>
       </div>
     </header>

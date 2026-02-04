@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "../styles/Signup.css";
 import { ChevronRight } from "lucide-react";
 
@@ -40,7 +41,7 @@ export default function Signup() {
         </button>
 
         <p className="login-link">
-          Already have an account? <span>Log in</span>
+          Already have an account? <span><Link to="/login">Login</Link></span>
         </p>
       </div>
     </div>
