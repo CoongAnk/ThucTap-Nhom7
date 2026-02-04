@@ -2,6 +2,7 @@
 export default {
   content: [
     "./index.html",
+<<<<<<< Updated upstream
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -14,3 +15,12 @@ export default {
   },
   plugins: [],
 }
+=======
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+>>>>>>> Stashed changes

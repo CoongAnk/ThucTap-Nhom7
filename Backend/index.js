@@ -1,6 +1,10 @@
 const express = require('express');
 const connectDB = require('./config/db.js');
+<<<<<<< Updated upstream
 const courseRoutes = require('./routes/courseRoutes.js');
+=======
+const courseRoutes = require('./routes/CourseRoutes.js');
+>>>>>>> Stashed changes
 require('dotenv').config();
 
 const app = express();
