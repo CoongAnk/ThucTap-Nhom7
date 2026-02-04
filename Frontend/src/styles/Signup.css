@@ -1,0 +1,110 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+.signup-wrapper{
+  display:flex;
+  height:100vh;
+  background:#f6f8fc;
+}
+
+/* LEFT */
+
+.signup-left{
+  flex:1.2;
+  background:linear-gradient(135deg,#4facfe,#00c6ff);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
+  padding:40px;
+}
+
+.signup-left img{
+  width:420px;
+  max-width:90%;
+  margin-bottom:20px;
+}
+
+.signup-left h2{
+  margin-top:10px;
+  font-size:26px;
+}
+
+.signup-left p{
+  max-width:420px;
+  opacity:.9;
+}
+
+/* RIGHT */
+
+.signup-right{
+  flex:1;
+  background:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px;
+}
+
+.signup-right h1{
+  font-size:34px;
+  margin-bottom:35px;
+}
+
+/* BUTTON */
+
+.role-btn{
+  width:100%;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:14px;
+  border:2px solid #e4e7ec;
+  background:#f9fbff;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  transition:.25s;
+}
+
+.role-btn:hover{
+  border-color:#4facfe;
+  background:#eef5ff;
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(79,172,254,.25);
+}
+
+/* LOGIN LINK */
+
+.login-link{
+  margin-top:10px;
+  color:#555;
+}
+
+.login-link span{
+  color:#4facfe;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .signup-left{
+    display:none;
+  }
+
+  .signup-right{
+    flex:1;
+  }
+}
