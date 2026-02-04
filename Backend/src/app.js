@@ -9,4 +9,6 @@ console.log("👉 authRoutes =", authRoutes);
 
 app.use("/auth", authRoutes);
 
+app.use("/api/ai", require("./routes/aiTutor.route"));
+
 export default app;

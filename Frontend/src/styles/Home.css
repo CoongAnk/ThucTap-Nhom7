@@ -1,149 +1,328 @@
-/* HERO */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 60px 80px;
-  gap: 40px;
+.home {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f2937;
 }
 
-.hero-text h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
+/* COMMON */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
 }
 
-.hero-text p {
-  font-size: 18px;
-  margin-bottom: 24px;
-}
-
-.role-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.role-btn {
-  border: 1px solid #1865f2;
-  color: #1865f2;
-  padding: 10px 18px;
-  border-radius: 4px;
+.btn.primary {
+  padding: 14px 26px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#4facfe,#00f2fe);
+  color: white;
   font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: .3s;
 }
 
-.role-btn:hover {
-  background: #1865f2;
-  color: #fff;
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
 
-/* EXPLORE DARK */
-.explore-dark {
-  background: #0b214a;
-  color: #fff;
-  margin: 40px auto;
-  padding: 40px;
-  max-width: 1100px;
-  border-radius: 8px;
+/* HERO */
+.home-hero {
+  padding: 100px 0;
 }
 
-.explore-dark h2 {
-  margin-bottom: 24px;
-}
-
-.explore-dark details {
-  margin-bottom: 12px;
-}
-
-.explore-dark summary {
-  font-weight: bold;
-}
-
-.explore-content {
+.hero-grid {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  padding: 12px 0;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
 }
 
-/* EFFECTIVENESS */
-.effectiveness {
-  padding: 60px 80px;
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+/* EXPLORE */
+.home-explore {
+  background: #f3f4f6;
+  padding: 90px 0;
+}
+
+.explore-list {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 30px;
+}
+
+.explore-item {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+/* IMPACT */
+.home-impact {
+  padding: 90px 0;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 40px;
   text-align: center;
 }
 
-.effect-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 32px;
-}
-
-/* TEACHER */
-.teacher {
+/* TWO COLUMN */
+.two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 60px 80px;
+  gap: 60px;
+  align-items: center;
+  padding: 90px 0;
 }
 
-.primary-btn {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 18px;
-  background: #1865f2;
-  color: #fff;
-  border-radius: 4px;
+.reverse {
+  direction: rtl;
 }
 
-/* LEARNER */
-.learner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 60px 80px;
+.reverse > * {
+  direction: ltr;
 }
 
 /* QUOTE */
-.quote {
-  padding: 80px;
+.home-quote {
+  padding: 100px 20px;
   text-align: center;
+  font-size: 22px;
+  background: #f9fafb;
 }
 
-.quote blockquote {
-  font-size: 24px;
-  margin-top: 24px;
-  font-style: italic;
-}
-
-/* DONATION */
-.donation {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 60px 80px;
-  background: #f5f7fb;
-}
-
-.donate-btn {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 18px;
-  border: 1px solid #1865f2;
-  color: #1865f2;
-}
-
-.donate-btn:hover {
-  background: #1865f2;
-  color: #fff;
+/* DONATE */
+.home-donate {
+  padding: 100px 0;
+  text-align: center;
 }
 
 /* JOIN */
-.join {
-  padding: 80px;
+.home-join {
+  padding: 100px 20px;
   text-align: center;
 }
 
-/* SPONSORS */
-.sponsors {
-  padding: 60px;
+.join-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* =========================
+   SPONSORS – TEXT ONLY
+   ========================= */
+
+.home-sponsors {
+  padding: 80px 20px;
   text-align: center;
+  background: #f9fafb;
+}
+
+.home-sponsors h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+/* LIST */
+
+.sponsor-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* INDIVIDUAL SPONSOR */
+
+.sponsor {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  cursor: default;
+}
+
+/* FONT STYLE VARIATION – tạo cảm giác "nghệ thuật" */
+
+.sponsor.s1 {
   font-family: "Georgia", serif;
 }
+
+.sponsor.s2 {
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: italic;
+}
+
+.sponsor.s3 {
+  font-family: "Segoe UI", sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.sponsor.s4 {
+  font-family: "Palatino Linotype", serif;
+}
+
+/* HOVER */
+
+.sponsor:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+
+/* =========================
+   EXPLORE – KHAN STYLE
+   ========================= */
+
+.explore-section {
+  background: #f5f6f8;
+  padding: 80px 0;
+}
+
+.explore-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.explore-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* LIST */
+
+.explore-list {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* GROUP */
+
+.explore-group {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.explore-group:last-child {
+  border-bottom: none;
+}
+
+/* HEADER */
+
+.explore-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.explore-header:hover {
+  background: #f4f6fb;
+}
+
+.explore-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.explore-icon {
+  font-size: 20px;
+}
+
+.explore-group-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ARROW */
+
+.explore-arrow {
+  transition: transform 0.25s ease;
+}
+
+.explore-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* CONTENT */
+
+.explore-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: #fafafa;
+}
+
+.explore-content.open {
+  max-height: 600px;
+}
+
+.explore-content ul {
+  list-style: none;
+  padding: 12px 56px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+
+.explore-content li {
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.explore-content li:hover {
+  color: #1865f2;
+}
+/* =========================
+   IMAGE CONSTRAINTS – KHAN STYLE
+   ========================= */
+
+.hero-image img {
+  max-width: 520px;
+  width: 100%;
+}
+
+.home-impact img {
+  max-width: 90px;
+  margin-bottom: 16px;
+}
+
+.two-col img {
+  max-width: 520px;
+  width: 100%;
+}
+
+.home-quote img {
+  max-width: 120px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.home-donate img {
+  max-width: 100px;
+  margin-bottom: 24px;
+}
+
+
