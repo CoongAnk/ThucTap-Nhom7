@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -22,6 +23,8 @@ function App() {
 
 export default App
 =======
+=======
+>>>>>>> Stashed changes
 export default function App() {
   return (
     <div className="h-screen flex items-center justify-center bg-gray-900 text-white text-3xl">
@@ -29,4 +32,7 @@ export default function App() {
     </div>
   )
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

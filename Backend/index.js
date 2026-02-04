@@ -1,7 +1,11 @@
 const express = require('express');
 const connectDB = require('./config/db.js');
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const courseRoutes = require('./routes/courseRoutes.js');
+=======
+const courseRoutes = require('./routes/CourseRoutes.js');
+>>>>>>> Stashed changes
 =======
 const courseRoutes = require('./routes/CourseRoutes.js');
 >>>>>>> Stashed changes
