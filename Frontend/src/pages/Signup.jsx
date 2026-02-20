@@ -102,16 +102,16 @@ export default function Signup() {
     try {
       // Map frontend roles to backend roles
       const roleMap = {
-        learner: "STUDENT",
-        teacher: "TEACHER",
-        parent: "PARENT"
+        learner: "student",
+        teacher: "teacher",
+        parent: "parent"
       };
 
       const response = await register({
         email: formData.email,
-        name: formData.name,
+        fullName: formData.name,
         password: formData.password,
-        role: roleMap[formData.role] || "STUDENT",
+        role: roleMap[formData.role] || "student",
         birthDay: formData.birthDay
       });
 
