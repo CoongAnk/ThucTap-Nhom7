@@ -1,110 +1,472 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-.signup-wrapper{
-  display:flex;
-  height:100vh;
-  background:#f6f8fc;
+.signup-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
 }
 
-/* LEFT */
+/* ========== LEFT SIDE ========== */
 
-.signup-left{
-  flex:1.2;
-  background:linear-gradient(135deg,#4facfe,#00c6ff);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  text-align:center;
-  padding:40px;
+.signup-left {
+  flex: 1.2;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-.signup-left img{
-  width:420px;
-  max-width:90%;
-  margin-bottom:20px;
+.signup-left::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
 }
 
-.signup-left h2{
-  margin-top:10px;
-  font-size:26px;
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, -20px); }
 }
 
-.signup-left p{
-  max-width:420px;
-  opacity:.9;
+.left-content {
+  max-width: 500px;
+  z-index: 1;
 }
 
-/* RIGHT */
-
-.signup-right{
-  flex:1;
-  background:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:60px;
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 40px;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+  animation: fadeIn 1s ease;
 }
 
-.signup-right h1{
-  font-size:34px;
-  margin-bottom:35px;
+.info-section {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 40px;
 }
 
-/* BUTTON */
-
-.role-btn{
-  width:100%;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:14px;
-  border:2px solid #e4e7ec;
-  background:#f9fbff;
-  font-size:18px;
-  font-weight:600;
-  cursor:pointer;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  transition:.25s;
+.info-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.role-btn:hover{
-  border-color:#4facfe;
-  background:#eef5ff;
-  transform:translateY(-4px);
-  box-shadow:0 10px 25px rgba(79,172,254,.25);
+.info-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
-/* LOGIN LINK */
-
-.login-link{
-  margin-top:10px;
-  color:#555;
+/* Progress Indicator */
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 40px;
 }
 
-.login-link span{
-  color:#4facfe;
-  font-weight:600;
-  cursor:pointer;
+.progress-dot {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.4s ease;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-/* MOBILE */
+.progress-dot.active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
 
-@media(max-width:900px){
-  .signup-left{
-    display:none;
+.progress-line {
+  width: 60px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========== RIGHT SIDE ========== */
+
+.signup-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #ffffff;
+}
+
+.signup-box {
+  width: 100%;
+  max-width: 520px;
+  padding: 50px 40px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.step-content {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-box h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.step-description {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 35px;
+}
+
+/* ========== BACK BUTTON ========== */
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  gap: 8px;
+  color: #764ba2;
+}
+
+/* ========== ROLE BUTTONS ========== */
+
+.roles-container {
+  margin-bottom: 30px;
+}
+
+.role-btn {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 15px;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.role-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+  text-align: left;
+}
+
+.role-icon {
+  font-size: 2.5rem;
+  width: 65px;
+  height: 65px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-icon.learner {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.role-icon.teacher {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.role-icon.parent {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.role-text h3 {
+  font-size: 1.1rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.role-text p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.role-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+}
+
+.role-btn svg {
+  margin-right: 20px;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.role-btn:hover svg {
+  color: #667eea;
+  transform: translateX(5px);
+}
+
+/* ========== INPUT FIELDS ========== */
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 15px 15px 45px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background: #f8fafc;
+}
+
+.input-group input::placeholder {
+  color: #94a3b8;
+}
+
+.input-group input:focus {
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.input-group input.error {
+  border-color: #ef4444;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.input-group input:focus ~ .icon {
+  color: #667eea;
+}
+
+/* Date input styling */
+input[type="date"] {
+  color: #1e293b;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: opacity(0.6);
+}
+
+/* ========== ERROR MESSAGE ========== */
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
+.error-message.submit-error {
+  background: #fee;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ========== BUTTONS ========== */
+
+.continue-btn,
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.continue-btn:hover,
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========== LINKS ========== */
+
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  text-decoration: none;
+}
+
+.login-link span {
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-link span:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.terms {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.terms a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+  .signup-left {
+    padding: 40px 30px;
+  }
+  
+  .hero-image {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 900px) {
+  .signup-left {
+    display: none;
   }
 
-  .signup-right{
-    flex:1;
+  .signup-right {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-box {
+    padding: 40px 25px;
+  }
+
+  .signup-box h1 {
+    font-size: 1.6rem;
+  }
+
+  .role-content {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .role-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 2rem;
+  }
+
+  .role-text h3 {
+    font-size: 1rem;
+  }
+
+  .role-text p {
+    font-size: 0.85rem;
   }
 }
