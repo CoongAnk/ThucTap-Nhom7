@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import SubjectPage from "./pages/SubjectPage";
+import LessonDetail from "./pages/LessonDetail";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/tutor" element={<ChatTutor />} />
+        <Route path="/subject/:subjectSlug" element={<SubjectPage />} />
+        <Route path="/subject/:subjectSlug/:lessonSlug" element={<LessonDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>
