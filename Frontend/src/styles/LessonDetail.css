@@ -1,0 +1,100 @@
+.lesson-detail-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px 0;
+}
+
+.lesson-detail-container {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  gap: 32px;
+}
+
+.lesson-detail-sidebar {
+  width: 260px;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.lesson-detail-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.lesson-detail-sidebar li {
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lesson-detail-sidebar li:hover {
+  background: #f1f3ff;
+}
+
+.lesson-detail-sidebar li.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.lesson-detail-content {
+  flex: 1;
+}
+
+.exercise-card {
+  margin-top: 24px;
+  background: white;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.exercise-area {
+  margin: 24px 0;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.item {
+  font-size: 40px;
+  cursor: grab;
+}
+
+.drop-zone {
+  flex: 1;
+  height: 120px;
+  border: 2px dashed #ccc;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.drop-zone {
+  flex: 1;
+  min-height: 120px;
+  border: 2px dashed #ccc;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  color: #999;
+  transition: 0.3s;
+}
+
+.drop-zone:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.dropped-item {
+  font-size: 32px;
+}
