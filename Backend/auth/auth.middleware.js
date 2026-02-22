@@ -1,7 +1,6 @@
-/// auth/auth.middleware.js
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-export const authGuard = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
   const header = req.headers.authorization;
   if (!header) return res.status(401).json({ message: "Unauthorized" });
 
@@ -14,3 +13,5 @@ export const authGuard = (req, res, next) => {
     res.status(401).json({ message: "Invalid token" });
   }
 };
+
+module.exports = authMiddleware;
