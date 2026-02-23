@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import org.springframework.security.authentication.InsufficientAuthenticationException;
 import java.io.IOException;
 
 @Slf4j
@@ -35,6 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // Bỏ qua nếu không có Bearer token
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            log.warn("Thiếu token: {}", request.getRequestURI()); // Thêm exception hiển thị
             filterChain.doFilter(request, response);
             return;
         }
