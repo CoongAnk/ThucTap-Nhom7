@@ -8,7 +8,6 @@ import Signup from "./pages/Signup";
 import Quiz from "./pages/Quiz";
 import SubjectPage from "./pages/SubjectPage";
 import LessonDetail from "./pages/LessonDetail";
-
 function App() {
   return (
     <BrowserRouter>
