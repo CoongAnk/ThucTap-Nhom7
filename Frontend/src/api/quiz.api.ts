@@ -48,23 +48,13 @@ export interface SubmitQuizResponseDTO {
 const handleResponse = async <T>(
   response: Response
 ): Promise<T> => {
-
-  // ❗ Nếu HTTP lỗi, đọc text thay vì json
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(
-      `HTTP ${response.status}: ${errorText || "Request failed"}`
-    );
-  }
-
-  // Sau khi chắc chắn OK mới parse JSON
   const data: ApiResponse<T> = await response.json();
 
-  if (!data.success) {
+  if (!response.ok || !data.success) {
     throw new Error(data.message || "Request failed");
   }
 
-  return data.data;
+  return data.data; // 👈 trả thẳng phần data cho UI
 };
 
 /* ================================
