@@ -5,7 +5,10 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+
 import Quiz from "./pages/Quiz";
+import SubjectPage from "./pages/SubjectPage";
+import LessonDetail from "./pages/LessonDetail";
 
 function App() {
   return (
