@@ -10,7 +10,7 @@ import "../styles/Quiz.css";
 import { getQuizDetail, submitQuiz } from "../api/quiz.api";
 
 export default function Quiz() {
-  const quizId = 1; // sau này có thể lấy từ params
+  const quizId = 3; // sau này có thể lấy từ params
 
   const [status, setStatus] = useState("start");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -33,6 +33,7 @@ export default function Quiz() {
     try {
       setLoading(true);
       const data = await getQuizDetail(quizId);
+      console.log("Quiz detail loaded:", data);
       setQuiz(data);
       setStatus("question");
       setCurrentQuestionIndex(0);
@@ -75,10 +76,14 @@ export default function Quiz() {
         })
       );
 
-      const response = await submitQuiz(quizId, formattedAnswers);
+      const response = await submitQuiz(
+  quizId,
+  formattedAnswers,
+  quiz.questions.length
+);
 
-      setResults(response);
-      setStatus("results");
+setResults(response);
+setStatus("results");
     } catch (error) {
       console.error(error);
     }

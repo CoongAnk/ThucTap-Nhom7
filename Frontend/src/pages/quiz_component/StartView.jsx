@@ -12,26 +12,6 @@ export const StartView = ({ totalQuestions, onStart }) => {
       {/* HEADER */}
       <div className="start-header">
         <h1 className="start-title">Thử thách của khóa học</h1>
-
-        <div className="start-links">
-          <a href="#" className="start-link">
-            <img
-              src="https://www.gstatic.com/classroom/logo_square_48.png"
-              alt="Classroom"
-              className="start-link-icon"
-            />
-            Google Classroom <ExternalLink size={14} />
-          </a>
-
-          <a href="#" className="start-link">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png"
-              alt="Teams"
-              className="start-link-icon"
-            />
-            Microsoft Teams <ExternalLink size={14} />
-          </a>
-        </div>
       </div>
 
       {/* MAIN */}

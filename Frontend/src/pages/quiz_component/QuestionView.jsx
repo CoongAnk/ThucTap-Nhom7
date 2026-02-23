@@ -10,7 +10,12 @@ export const QuestionView = ({
   onNext,
   onBack,
   isLastQuestion
-}) => {
+}) => { 
+
+  if (!currentQuestion || !currentQuestion.options) {
+    return <div>Loading...</div>;
+  }
+
   const isSelected = (optionId) =>
     userAnswers[currentQuestion.id] === optionId;
 
@@ -58,33 +63,33 @@ export const QuestionView = ({
           <p className="choose-label">Hãy chọn 1 đáp án:</p>
 
           <div className="options">
-            {currentQuestion.options.map((option) => (
-              <button
-                key={option.id}
-                onClick={() => onOptionSelect(option.id)}
-                className={`option-btn ${
-                  isSelected(option.id) ? "option-selected" : ""
-                }`}
-              >
-                <div
-                  className={`option-circle ${
-                    isSelected(option.id)
-                      ? "circle-selected"
-                      : "circle-default"
-                  }`}
-                >
-                  {option.id}
-                </div>
+            {currentQuestion.options.map((option, index) => (
+  <button
+    key={option.id}
+    onClick={() => onOptionSelect(option.id)}
+    className={`option-btn ${
+      isSelected(option.id) ? "option-selected" : ""
+    }`}
+  >
+    <div
+      className={`option-circle ${
+        isSelected(option.id)
+          ? "circle-selected"
+          : "circle-default"
+      }`}
+    >
+      {index + 1}
+    </div>
 
-                <span
-                  className={`option-text ${
-                    isSelected(option.id) ? "option-text-selected" : ""
-                  }`}
-                >
-                  {option.text}
-                </span>
-              </button>
-            ))}
+    <span
+      className={`option-text ${
+        isSelected(option.id) ? "option-text-selected" : ""
+      }`}
+    >
+      {option.text}
+    </span>
+  </button>
+))}
           </div>
         </div>
       </div>

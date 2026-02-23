@@ -63,14 +63,8 @@ const handleResponse = async <T>(
 
 export const getQuizDetail = async (
   quizId: number
-): Promise<QuizDetailDTO> => {
+): Promise<any> => {
   const token = getAccessToken();
-
-  console.log("========== DEBUG QUIZ ==========");
-  console.log("Quiz ID:", quizId);
-  console.log("Access Token:", token);
-  console.log("Token length:", token?.length);
-  console.log("================================");
 
   if (!token) {
     throw new Error("User not authenticated");
@@ -80,11 +74,27 @@ export const getQuizDetail = async (
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  return handleResponse<QuizDetailDTO>(response);
+  const data = await handleResponse<QuizDetailDTO>(response);
+
+  // 🔥 Normalize cho UI
+  return {
+    id: data.quizId,
+    title: data.title,
+    passScore: data.passScore,
+    questions: data.questions.map(q => ({
+      id: q.questionId,
+      text: q.questionText,
+      type: q.questionType,
+      options: q.answers.map(a => ({
+        id: a.answerId,
+        text: a.answerText
+      }))
+    }))
+  };
 };
 
 /* ================================
@@ -96,8 +106,9 @@ export const submitQuiz = async (
   answers: {
     questionId: number;
     selectedAnswerIds: number[];
-  }[]
-): Promise<SubmitQuizResponseDTO> => {
+  }[],
+  totalQuestions: number // 👈 truyền thêm tổng câu hỏi
+) => {
   const token = getAccessToken();
 
   if (!token) {
@@ -113,5 +124,18 @@ export const submitQuiz = async (
     body: JSON.stringify({ answers }),
   });
 
-  return handleResponse<SubmitQuizResponseDTO>(response);
+  const data = await handleResponse<any>(response);
+
+  // 🔥 Normalize cho UI
+  const percentage = data.score; // backend trả %
+
+  const correct = Math.round((percentage / 100) * totalQuestions);
+  const incorrect = totalQuestions - correct;
+
+  return {
+    percentage,
+    correct,
+    incorrect,
+    isPassed: data.isPassed,
+  };
 };
