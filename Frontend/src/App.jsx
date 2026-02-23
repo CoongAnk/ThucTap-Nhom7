@@ -20,7 +20,14 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/tutor" element={<ChatTutor />} />
         <Route path="/quiz" element={<Quiz />} />
-      </Routes>
+
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/subject/:subjectSlug" element={<SubjectPage />} />
+        <Route
+          path="/subject/:subjectSlug/:lessonSlug"
+          element={<LessonDetail />}
+        />
+        </Routes>
       <Footer />
     </BrowserRouter>
   );
