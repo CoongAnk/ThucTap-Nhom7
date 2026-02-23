@@ -7,3 +7,5 @@ education-platform/target/
 # IntelliJ
 education-platform/.idea/
 *.iml
+
+Frontend/node_modules/
