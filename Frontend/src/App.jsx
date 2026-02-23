@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/tutor" element={<ChatTutor />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
       <Footer />
     </BrowserRouter>

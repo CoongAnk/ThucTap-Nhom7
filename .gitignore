@@ -1,0 +1,9 @@
+# Node
+node_modules/
+
+# Maven
+education-platform/target/
+
+# IntelliJ
+education-platform/.idea/
+*.iml

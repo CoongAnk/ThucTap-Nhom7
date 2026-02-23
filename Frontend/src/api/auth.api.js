@@ -24,7 +24,6 @@ export const login = async ({ email, password }) => {
   if (!response.ok) {
     throw new Error(data.message || "Login failed");
   }
-
   return data; // { accessToken, expiresIn, ... }
 };
 
@@ -40,7 +39,6 @@ export const register = async ({ email, fullName, password, role, birthDay }) =>
   if (!response.ok) {
     throw new Error(data.message || "Registration failed");
   }
-
   return data; // { accessToken, expiresIn, ... }
 };
 
