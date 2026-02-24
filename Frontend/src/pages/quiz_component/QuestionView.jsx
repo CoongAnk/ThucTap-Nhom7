@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import "./QuestionView.css";
 
 export const QuestionView = ({
@@ -15,6 +16,28 @@ export const QuestionView = ({
   if (!currentQuestion || !currentQuestion.options) {
     return <div>Loading...</div>;
   }
+
+  console.log("Current Question:", currentQuestion);
+  console.log("Options:", currentQuestion.options);
+  
+
+  const selectedOptionId = userAnswers[currentQuestion.id];
+
+  // Lấy id đáp án đúng từ database
+  const correctOptionId = currentQuestion.correct_option_id;
+
+  // Tìm option đúng
+  const correctOption = currentQuestion.options.find(
+    (opt) => opt.id === correctOptionId
+  );
+
+  // So sánh id
+  const isCorrect = selectedOptionId === correctOptionId;
+
+  const [isChecked, setIsChecked] = useState(false);
+  useEffect(() => {
+    setIsChecked(false);
+  }, [currentQuestionIndex]);
 
   const isSelected = (optionId) =>
     userAnswers[currentQuestion.id] === optionId;
@@ -64,33 +87,47 @@ export const QuestionView = ({
 
           <div className="options">
             {currentQuestion.options.map((option, index) => (
-  <button
-    key={option.id}
-    onClick={() => onOptionSelect(option.id)}
-    className={`option-btn ${
-      isSelected(option.id) ? "option-selected" : ""
-    }`}
-  >
-    <div
-      className={`option-circle ${
-        isSelected(option.id)
-          ? "circle-selected"
-          : "circle-default"
-      }`}
-    >
-      {index + 1}
-    </div>
+            <button
+              key={option.id}
+              onClick={() => onOptionSelect(option.id)}
+              className={`option-btn ${
+                isSelected(option.id) ? "option-selected" : ""
+              }`}
+            >
+              <div
+                className={`option-circle ${
+                  isSelected(option.id)
+                    ? "circle-selected"
+                    : "circle-default"
+                }`}
+              >
+                {index + 1}
+              </div>
 
-    <span
-      className={`option-text ${
-        isSelected(option.id) ? "option-text-selected" : ""
-      }`}
-    >
-      {option.text}
-    </span>
-  </button>
-))}
+              <span
+                className={`option-text ${
+                  isSelected(option.id) ? "option-text-selected" : ""
+                }`}
+              >
+                {option.text}
+              </span>
+            </button>
+          ))}
           </div>
+          <button
+            className="btn-check"
+            disabled={!selectedOptionId}
+            onClick={() => setIsChecked(true)}
+          >
+            Kiểm tra đáp án
+          </button>
+          {isChecked && (
+            <div className={`answer-result ${isCorrect ? "correct" : "wrong"}`}>
+              {isCorrect
+                ? "✅ Chính xác!"
+                : `❌ Sai rồi! Đáp án đúng là: ${correctOption?.text}`}
+            </div>
+          )}
         </div>
       </div>
 

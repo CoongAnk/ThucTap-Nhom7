@@ -257,3 +257,31 @@
   color: #9ca3af;
   cursor: not-allowed;
 }
+
+.btn-check {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: #1865f2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-check:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.answer-result {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.answer-result.correct {
+  color: #16a34a;
+}
+
+.answer-result.wrong {
+  color: #dc2626;
+}
