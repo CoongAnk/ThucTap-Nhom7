@@ -129,21 +129,27 @@ public class QuizService {
 
         List<QuestionResponseDTO> questionDTOs = questions.stream().map(q -> {
 
-            List<Answer> answers =
-                    answerRepository.findByQuestionId(q.getQuestionId());
+                List<Answer> answers =
+                        answerRepository.findByQuestionId(q.getQuestionId());
 
-            List<AnswerResponseDTO> answerDTOs = answers.stream()
-                    .map(a -> new AnswerResponseDTO(
-                            a.getAnswerId(),
-                            a.getAnswerText()
-                    ))
-                    .toList();
+                List<OptionDTO> optionDTOs = answers.stream()
+                        .map(a -> new OptionDTO(
+                                a.getAnswerId().longValue(),
+                                a.getAnswerText()
+                        ))
+                        .toList();
+                Long correctOptionId = answers.stream()
+                        .filter(a -> Boolean.TRUE.equals(a.getIsCorrect()))
+                        .findFirst()
+                        .map(a -> a.getAnswerId().longValue())
+                        .orElse(null);
 
             return new QuestionResponseDTO(
-                    q.getQuestionId(),
+                    q.getQuestionId().longValue(),
                     q.getQuestionText(),
                     q.getQuestionType().name(),
-                    answerDTOs
+                    correctOptionId,
+                    optionDTOs
             );
 
         }).toList();
@@ -156,5 +162,3 @@ public class QuizService {
         );
     }
 }
-
-

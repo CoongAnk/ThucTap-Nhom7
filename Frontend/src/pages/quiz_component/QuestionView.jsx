@@ -13,34 +13,32 @@ export const QuestionView = ({
   isLastQuestion
 }) => { 
 
+  console.log("Current Question:", currentQuestion);
+  console.log("Options:", currentQuestion.options);
+
+  const [selectedOptionId, setSelectedOptionId] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    setSelectedOptionId(null);
+    setIsChecked(false);
+  }, [currentQuestionIndex]);
+
   if (!currentQuestion || !currentQuestion.options) {
     return <div>Loading...</div>;
   }
 
-  console.log("Current Question:", currentQuestion);
-  console.log("Options:", currentQuestion.options);
-  
-
-  const selectedOptionId = userAnswers[currentQuestion.id];
-
-  // Lấy id đáp án đúng từ database
-  const correctOptionId = currentQuestion.correct_option_id;
-
-  // Tìm option đúng
+  // Lấy id đáp án đúng
   const correctOption = currentQuestion.options.find(
-    (opt) => opt.id === correctOptionId
+    (o) => Number(o.id) === Number(currentQuestion.correctOptionId)
   );
 
   // So sánh id
-  const isCorrect = selectedOptionId === correctOptionId;
-
-  const [isChecked, setIsChecked] = useState(false);
-  useEffect(() => {
-    setIsChecked(false);
-  }, [currentQuestionIndex]);
+  const isCorrect =
+    Number(selectedOptionId) === Number(currentQuestion.correctOptionId);
 
   const isSelected = (optionId) =>
-    userAnswers[currentQuestion.id] === optionId;
+    Number(selectedOptionId) === Number(optionId);
 
   return (
     <motion.div
@@ -89,7 +87,11 @@ export const QuestionView = ({
             {currentQuestion.options.map((option, index) => (
             <button
               key={option.id}
-              onClick={() => onOptionSelect(option.id)}
+              onClick={() => {
+                const id = Number(option.id);
+                setSelectedOptionId(id);
+                onOptionSelect(currentQuestion.id, id);
+              }}
               className={`option-btn ${
                 isSelected(option.id) ? "option-selected" : ""
               }`}
@@ -124,8 +126,13 @@ export const QuestionView = ({
           {isChecked && (
             <div className={`answer-result ${isCorrect ? "correct" : "wrong"}`}>
               {isCorrect
-                ? "✅ Chính xác!"
-                : `❌ Sai rồi! Đáp án đúng là: ${correctOption?.text}`}
+                ? "✔ Chính xác!"
+                : (
+                    <>
+                      ❌ Sai rồi! Đáp án đúng là: {correctOption?.text}
+                    </>
+                  )
+              }
             </div>
           )}
         </div>

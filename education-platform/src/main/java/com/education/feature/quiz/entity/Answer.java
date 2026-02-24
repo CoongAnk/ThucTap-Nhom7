@@ -18,6 +18,10 @@ public class Answer {
     @Column(name = "question_id", nullable = false)
     private Integer questionId;
 
+    @ManyToOne
+    @JoinColumn(name = "question_id", insertable = false, updatable = false)
+    private Question question;
+
     @Column(name = "answer_text", nullable = false, columnDefinition = "TEXT")
     private String answerText;
 

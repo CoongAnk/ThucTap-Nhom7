@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
+import { Link, useNavigate } from 'react-router-dom';
 import "./StartView.css";
 
 export const StartView = ({ totalQuestions, onStart }) => {

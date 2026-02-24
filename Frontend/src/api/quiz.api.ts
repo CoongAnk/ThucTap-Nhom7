@@ -24,10 +24,16 @@ export interface QuizDetailDTO {
 }
 
 export interface QuestionDTO {
-  questionId: number;
-  questionText: string;
-  questionType: string;
-  answers: AnswerDTO[];
+  id: number;
+  text: string;
+  type: string;
+  correctOptionId: number;
+  options: OptionDTO[];
+}
+
+export interface OptionDTO {
+  id: number;
+  text: string;
 }
 
 export interface AnswerDTO {
@@ -86,14 +92,15 @@ export const getQuizDetail = async (
     title: data.title,
     passScore: data.passScore,
     questions: data.questions.map(q => ({
-      id: q.questionId,
-      text: q.questionText,
-      type: q.questionType,
-      options: q.answers.map(a => ({
-        id: a.answerId,
-        text: a.answerText
+      id: q.id,
+      text: q.text,
+      type: q.type,
+      correctOptionId: Number(q.correctOptionId),
+      options: q.options.map(o => ({
+          id: Number(o.id),
+          text: o.text
       }))
-    }))
+  }))
   };
 };
 
