@@ -1,6 +1,6 @@
-const { generateTutorReply } = require("../services/aiTutor.service");
+import { generateTutorReply } from "../services/aiTutor.service.js";
 
-exports.chatWithTutor = async (req, res) => {
+export const chatWithTutor = async (req, res) => {
   try {
     const { userId, message, lessonContext } = req.body;
 
@@ -11,8 +11,8 @@ exports.chatWithTutor = async (req, res) => {
     });
 
     res.json({ reply });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "AI Tutor failed" });
   }
 };

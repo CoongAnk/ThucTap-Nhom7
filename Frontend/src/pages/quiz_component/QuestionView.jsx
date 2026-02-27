@@ -18,10 +18,14 @@ export const QuestionView = ({
 
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
+  const [aiFeedback, setAiFeedback] = useState("");
+  const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
     setSelectedOptionId(null);
     setIsChecked(false);
+    setAiFeedback("");
+    setLoadingAI(false);
   }, [currentQuestionIndex]);
 
   if (!currentQuestion || !currentQuestion.options) {
@@ -39,6 +43,56 @@ export const QuestionView = ({
 
   const isSelected = (optionId) =>
     Number(selectedOptionId) === Number(optionId);
+
+  const handleCheckAnswer = async () => {
+    if (!selectedOptionId) return;
+
+    setIsChecked(true);
+
+    // Nếu đúng thì không gọi AI
+    if (isCorrect) {
+      setAiFeedback("🎉 Chính xác! Em đã làm rất tốt.");
+      return;
+    }
+
+    // Nếu sai mới gọi AI
+    setLoadingAI(true);
+    setAiFeedback("");
+
+    const selectedAnswerText =
+      currentQuestion.options.find(
+        (o) => Number(o.id) === Number(selectedOptionId)
+      )?.text;
+
+    try {
+      const res = await fetch("http://localhost:3000/api/ai/tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: "1",
+          message: `
+  Câu hỏi: ${currentQuestion.text}
+  Đáp án học sinh chọn: ${selectedAnswerText}
+  Học sinh trả lời sai. Hãy giải thích lại nhẹ nhàng.
+  `,
+          lessonContext: {
+            level: "beginner",
+            subject: "Quiz",
+            lesson: currentQuestion.text,
+            goal: "Understand the concept"
+          }
+        })
+      });
+
+      const data = await res.json();
+      setAiFeedback(data.reply);
+
+    } catch (err) {
+      setAiFeedback("Có lỗi khi gọi AI.");
+    } finally {
+      setLoadingAI(false);
+    }
+  };
 
   return (
     <motion.div
@@ -119,20 +173,19 @@ export const QuestionView = ({
           <button
             className="btn-check"
             disabled={!selectedOptionId}
-            onClick={() => setIsChecked(true)}
+            onClick={handleCheckAnswer}
           >
             Kiểm tra đáp án
           </button>
           {isChecked && (
-            <div className={`answer-result ${isCorrect ? "correct" : "wrong"}`}>
-              {isCorrect
-                ? "✔ Chính xác!"
-                : (
-                    <>
-                      ❌ Sai rồi! Đáp án đúng là: {correctOption?.text}
-                    </>
-                  )
-              }
+            <div className="ai-feedback">
+              {loadingAI && <p>AI đang phân tích...</p>}
+              {!loadingAI && aiFeedback && (
+                <>
+                  <h4>Nhận xét từ AI:</h4>
+                  <p>{aiFeedback}</p>
+                </>
+              )}
             </div>
           )}
         </div>

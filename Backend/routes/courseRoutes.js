@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Course = require('../models/Course');
+const Course = require('../../models/Course');
 
 // 1. Lấy tất cả khóa học (để hiện ở trang chủ)
 router.get('/', async (req, res) => {

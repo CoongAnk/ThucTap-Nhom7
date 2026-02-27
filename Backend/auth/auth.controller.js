@@ -1,9 +1,8 @@
-// auth/auth.controller.js
-const { AuthUseCase } = require("./auth.usecase");
+import { AuthUseCase } from "./auth.usecase.js";
 
 const authUseCase = new AuthUseCase();
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
   try {
     console.log("🔥 HIT REGISTER");
     const token = await authUseCase.register(req.body);
@@ -13,7 +12,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const token = await authUseCase.login(req.body);
     res.json({ accessToken: token });
@@ -21,9 +20,3 @@ const login = async (req, res) => {
     res.status(401).json({ message: err.message });
   }
 };
-
-module.exports = {
-  register,
-  login,
-};
-
