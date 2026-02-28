@@ -8,6 +8,8 @@ import Signup from "./pages/Signup";
 import Quiz from "./pages/Quiz";
 import SubjectPage from "./pages/SubjectPage";
 import LessonDetail from "./pages/LessonDetail";
+import FloatingChatbot from "./components/FloatingChatbot";
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,7 @@ function App() {
         <Route path="/subject/:subjectSlug" element={<SubjectPage />} />
         <Route path="/subject/:subjectSlug/:lessonSlug" element={<LessonDetail />} />
       </Routes>
+      <FloatingChatbot />
       <Footer />
     </BrowserRouter>
   );
