@@ -9,3 +9,8 @@ education-platform/.idea/
 *.iml
 
 Frontend/node_modules/
+
+node_modules/
+Frontend/node_modules/
+dist/
+.vite/
