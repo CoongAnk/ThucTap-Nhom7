@@ -45,12 +45,12 @@ export default function Quiz() {
     }
   };
 
-  const handleOptionSelect = (optionId) => {
-    setUserAnswers((prev) => ({
-      ...prev,
-      [currentQuestion.id]: optionId,
-    }));
-  };
+  const handleOptionSelect = (questionId, answerId) => {
+  setUserAnswers((prev) => ({
+    ...prev,
+    [questionId]: answerId,
+  }));
+};
 
   const handleNext = async () => {
     if (isLastQuestion) {
@@ -68,26 +68,33 @@ export default function Quiz() {
 
   // 🚀 Submit toàn bộ bài
   const handleSubmit = async () => {
-    try {
-      const formattedAnswers = Object.entries(userAnswers).map(
-        ([questionId, answerId]) => ({
-          questionId: Number(questionId),
-          selectedAnswerIds: [Number(answerId)],
-        })
-      );
+  try {
+    const formattedAnswers = Object.entries(userAnswers).map(
+      ([questionId, answerId]) => ({
+        questionId: Number(questionId),
+        selectedAnswerIds: [Number(answerId)],
+      })
+    );
 
-      const response = await submitQuiz(
-  quizId,
-  formattedAnswers,
-  quiz.questions.length
-);
+    console.log("🚀 SUBMIT PAYLOAD:");
+    console.log({
+      quizId,
+      answers: formattedAnswers,
+      totalQuestions: quiz.questions.length,
+    });
 
-setResults(response);
-setStatus("results");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    const response = await submitQuiz(
+      quizId,
+      formattedAnswers,
+      quiz.questions.length
+    );
+
+    setResults(response);
+    setStatus("results");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="app-container">
