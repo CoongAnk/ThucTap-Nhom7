@@ -9,6 +9,12 @@ import Quiz from "./pages/Quiz";
 import SubjectPage from "./pages/SubjectPage";
 import LessonDetail from "./pages/LessonDetail";
 import FloatingChatbot from "./components/FloatingChatbot";
+import Courses from "./pages/Courses";
+import Progress from "./pages/Progress";
+import Account from "./pages/Account";
+import ProgressDetail from "./pages/ProgressDetail";
+import Profile from "./pages/Profile";
+import Teacher from "./pages/Teacher";
 
 function App() {
   return (
@@ -18,6 +24,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/progress" element={<Progress />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/progress-detail" element={<ProgressDetail />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/teacher" element={<Teacher />} />
         <Route path="/tutor" element={<ChatTutor />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/subject/:subjectSlug" element={<SubjectPage />} />

@@ -160,6 +160,14 @@ export default function Navbar() {
                   <div className="dropdown-overlay" onClick={() => setIsUserMenuOpen(false)}></div>
                   <div className="user-dropdown">
                     <Link 
+                      to="/courses" 
+                      className="user-dropdown-item"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      <BookOpen size={18} />
+                      <span>Các khóa học của tôi</span>
+                    </Link>
+                    <Link 
                       to="/profile" 
                       className="user-dropdown-item"
                       onClick={() => setIsUserMenuOpen(false)}
