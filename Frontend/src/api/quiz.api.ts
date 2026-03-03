@@ -105,6 +105,71 @@ export const getQuizDetail = async (
 };
 
 /* ================================
+   GET ALL QUIZZES
+================================ */
+
+export const getAllQuizzes = async (): Promise<any[]> => {
+  const token = getAccessToken();
+
+  if (!token) {
+    throw new Error("User not authenticated");
+  }
+
+  const response = await fetch(`${BASE_URL}/quizzes`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await handleResponse<any[]>(response);
+
+  return data || [];
+};
+
+/* ================================
+   GET QUIZ BY LESSON SLUG
+================================ */
+
+export const getQuizByLessonSlug = async (
+  lessonSlug: string
+): Promise<any> => {
+  const token = getAccessToken();
+
+  if (!token) {
+    throw new Error("User not authenticated");
+  }
+
+  const response = await fetch(`${BASE_URL}/quizzes/by-lesson/${lessonSlug}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await handleResponse<QuizDetailDTO>(response);
+
+  // 🔥 Normalize cho UI
+  return {
+    id: data.quizId,
+    title: data.title,
+    passScore: data.passScore,
+    questions: data.questions.map(q => ({
+      id: q.id,
+      text: q.text,
+      type: q.type,
+      correctOptionId: Number(q.correctOptionId),
+      options: q.options.map(o => ({
+          id: Number(o.id),
+          text: o.text
+      }))
+  }))
+  };
+};
+
+/* ================================
    SUBMIT QUIZ
 ================================ */
 

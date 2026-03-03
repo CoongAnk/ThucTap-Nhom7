@@ -12,6 +12,7 @@ Nếu học sinh trả lời sai:
 - Chỉ ra lỗi sai một cách nhẹ nhàng.
 - Giải thích đúng khái niệm.
 - Không đưa ra quá nhiều thông tin thừa.
+- Đưa ra hướng dẫn để học sinh tự tìm ra đáp án đúng, thay vì nói trực tiếp.
 `;
 
 export default khanmigoPrompt;
