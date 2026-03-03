@@ -9,6 +9,7 @@ import Quiz from "./pages/Quiz";
 import SubjectPage from "./pages/SubjectPage";
 import LessonDetail from "./pages/LessonDetail";
 import FloatingChatbot from "./components/FloatingChatbot";
+import Donate from "./pages/Donate";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/subject/:subjectSlug" element={<SubjectPage />} />
         <Route path="/subject/:subjectSlug/:lessonSlug" element={<LessonDetail />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
       <FloatingChatbot />
       <Footer />
