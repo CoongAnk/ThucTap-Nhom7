@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const exploreItems = [
     { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/math' },
-    { icon: <Microscope size={20} />, title: 'Khoa học', desc: 'Vật lý, Hóa học, Sinh học', link: '/science' },
+    { icon: <Microscope size={20} />, title: 'Tiếng Anh', desc: 'Tiếng Anh cơ bản đến nâng cao', link: '/english' },
     { icon: <Code size={20} />, title: 'Lập trình', desc: 'Web, Python, JavaScript', link: '/programming' },
     { icon: <Lightbulb size={20} />, title: 'Kỹ năng', desc: 'Tư duy phản biện, Sáng tạo', link: '/skills' },
     { icon: <GraduationCap size={20} />, title: 'Giáo viên', desc: 'Tài nguyên cho giáo viên', link: '/teachers' },
