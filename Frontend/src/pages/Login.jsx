@@ -37,8 +37,8 @@ export default function Login() {
 
       console.log("Login successful:", user);
 
-      // ✅ Redirect to home
-      navigate("/");
+      // ✅ Redirect to courses
+      navigate("/courses");
     } catch (err) {
       setError(err.message || "Đăng nhập thất bại. Vui lòng thử lại.");
       console.error("Login error:", err);

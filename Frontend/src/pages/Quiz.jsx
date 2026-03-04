@@ -10,7 +10,10 @@ import "../styles/Quiz.css";
 import { getQuizDetail, submitQuiz } from "../api/quiz.api";
 
 export default function Quiz() {
-  const quizId = 3; // sau này có thể lấy từ params
+  const quizId = 5; // sau này có thể lấy từ params
+  // 5= Toán
+  // 4= Tiếng Anh
+  // 3= Lập trình
 
   const [status, setStatus] = useState("start");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
