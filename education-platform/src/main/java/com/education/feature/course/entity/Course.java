@@ -24,4 +24,5 @@ public class Course {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
 }

@@ -8,6 +8,8 @@ import com.education.feature.course.entity.Course;
 import com.education.feature.course.entity.Enrollment;
 import com.education.feature.course.repository.CourseRepository;
 import com.education.feature.course.repository.EnrollmentRepository;
+import com.education.feature.quiz.entity.Quiz;
+import com.education.feature.quiz.repository.QuizRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final EnrollmentRepository enrollmentRepository;
     private final UserRepository userRepository;
+    private final QuizRepository quizRepository;
 
     // ─── GET ALL COURSES ─────────────────────────────
 
@@ -32,7 +35,21 @@ public class CourseService {
         List<Course> courses = courseRepository.findAll();
 
         return courses.stream()
-                .map(this::mapToDTO)
+                .map(course -> {
+
+                    List<Integer> quizIds =
+                            quizRepository.findByCourseId(course.getCourseId())
+                                    .stream()
+                                    .map(Quiz::getQuizId)
+                                    .toList();
+
+                    return CourseResponseDTO.builder()
+                            .courseId(course.getCourseId())
+                            .title(course.getTitle())
+                            .description(course.getDescription())
+                            .quizIds(quizIds)
+                            .build();
+                })
                 .toList();
     }
 
