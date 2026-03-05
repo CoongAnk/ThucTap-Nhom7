@@ -10,10 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 )
-<<<<<<< HEAD
-=======
 
 window.addEventListener("unhandledrejection", function (event) {
   console.error("🔥 Unhandled promise rejection:", event.reason);
 });
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f

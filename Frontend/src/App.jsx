@@ -5,11 +5,6 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-<<<<<<< HEAD
-import SubjectPage from "./pages/SubjectPage";
-import LessonDetail from "./pages/LessonDetail";
-
-=======
 import Quiz from "./pages/Quiz";
 import SubjectPage from "./pages/SubjectPage";
 import LessonDetail from "./pages/LessonDetail";
@@ -21,7 +16,6 @@ import Account from "./pages/Account";
 import ProgressDetail from "./pages/ProgressDetail";
 import Profile from "./pages/Profile";
 import Teacher from "./pages/Teacher";
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 
 function App() {
   return (
@@ -31,12 +25,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-<<<<<<< HEAD
-        <Route path="/tutor" element={<ChatTutor />} />
-        <Route path="/subject/:subjectSlug" element={<SubjectPage />} />
-        <Route path="/subject/:subjectSlug/:lessonSlug" element={<LessonDetail />} />
-      </Routes>
-=======
         <Route path="/courses" element={<Courses />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/account" element={<Account />} />
@@ -56,7 +44,6 @@ function App() {
         <Route path="/teacher" element={<Teacher />} />
       </Routes>
       <FloatingChatbot />
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
       <Footer />
     </BrowserRouter>
   );

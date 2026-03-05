@@ -322,8 +322,6 @@
   box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
 }
 
-<<<<<<< HEAD
-=======
 /* ========== USER PROFILE MENU ========== */
 
 .user-menu-wrapper {
@@ -450,7 +448,6 @@
   color: #dc2626;
 }
 
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 1024px) {
@@ -465,8 +462,6 @@
   .explore-dropdown {
     min-width: 440px;
   }
-<<<<<<< HEAD
-=======
 
   .user-info {
     display: none;
@@ -476,7 +471,6 @@
     padding: 8px;
     gap: 0;
   }
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 }
 
 @media (max-width: 900px) {
@@ -528,8 +522,6 @@
   .dropdown-grid {
     grid-template-columns: 1fr;
   }
-<<<<<<< HEAD
-=======
 
   .user-menu-wrapper {
     width: 100%;
@@ -552,7 +544,6 @@
   .user-info {
     display: flex;
   }
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 }
 
 @media (max-width: 480px) {
@@ -574,8 +565,6 @@
     padding: 8px 12px;
     font-size: 0.9rem;
   }
-<<<<<<< HEAD
-=======
 
   .user-name {
     font-size: 0.7rem;
@@ -584,9 +573,6 @@
   .user-role {
     font-size: 0.5rem;
   }
-<<<<<<< HEAD
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
-=======
 }
 
 .user-menu {
@@ -614,5 +600,4 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
->>>>>>> main
 }

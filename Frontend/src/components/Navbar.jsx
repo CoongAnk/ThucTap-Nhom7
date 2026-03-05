@@ -1,39 +1,24 @@
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import { Search, Menu, X, ChevronDown, BookOpen, Microscope, Code, Lightbulb, GraduationCap, Heart } from 'lucide-react';
-import { useState } from 'react';
-=======
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Menu, X, ChevronDown, BookOpen, Microscope, Code, Lightbulb, GraduationCap, Heart, LogOut, User } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getUser, logout as logoutUser } from '../api/auth.api.js';
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 import '../styles/Navbar.css';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
-<<<<<<< HEAD
-
-  const exploreItems = [
-    { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/math' },
-    { icon: <Microscope size={20} />, title: 'Khoa học', desc: 'Vật lý, Hóa học, Sinh học', link: '/science' },
-=======
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const exploreItems = [
-    { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/math' },
-    { icon: <Microscope size={20} />, title: 'Tiếng Anh', desc: 'Tiếng Anh cơ bản đến nâng cao', link: '/english' },
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
-    { icon: <Code size={20} />, title: 'Lập trình', desc: 'Web, Python, JavaScript', link: '/programming' },
-    { icon: <Lightbulb size={20} />, title: 'Kỹ năng', desc: 'Tư duy phản biện, Sáng tạo', link: '/skills' },
-    { icon: <GraduationCap size={20} />, title: 'Giáo viên', desc: 'Tài nguyên cho giáo viên', link: '/teachers' },
+    { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/quiz?quizId=5' },
+    { icon: <Microscope size={20} />, title: 'Tiếng Anh', desc: 'Tiếng Anh cơ bản đến nâng cao', link: '/quiz?quizId=4' },
+    { icon: <Code size={20} />, title: 'Lập trình', desc: 'Web, Python, JavaScript', link: '/quiz?quizId=3' },
+    { icon: <Lightbulb size={20} />, title: 'Kỹ năng', desc: 'Tư duy phản biện, Sáng tạo', link: '/' },
+    { icon: <GraduationCap size={20} />, title: 'Giáo viên', desc: 'Tài nguyên cho giáo viên', link: '/' },
   ];
 
-<<<<<<< HEAD
-=======
   // ✅ Kiểm tra user từ localStorage khi component mount
   useEffect(() => {
     const storedUser = getUser();
@@ -68,7 +53,6 @@ export default function Navbar() {
     navigate('/login');
   };
 
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
   return (
     <header className="site-header">
       <div className="header-container">
@@ -78,10 +62,7 @@ export default function Navbar() {
           <button 
             className="mobile-menu-btn"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-<<<<<<< HEAD
-=======
             aria-label="Toggle menu"
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -145,18 +126,6 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className={`header-right ${isMenuOpen ? 'mobile-open' : ''}`}>
-<<<<<<< HEAD
-          <Link to="/login" className="nav-link">
-            Đăng nhập
-          </Link>
-          <Link to="/signup" className="signup-btn">
-            Đăng ký
-          </Link>
-          <a href="/donate" className="donate-btn">
-            <Heart size={18} />
-            <span>Quyên góp</span>
-          </a>
-=======
           {user ? (
             // ✅ User đã đăng nhập - Hiển thị profile menu
             <div className="user-menu-wrapper">
@@ -185,11 +154,6 @@ export default function Navbar() {
                   className={`dropdown-icon ${isUserMenuOpen ? 'rotate' : ''}`}
                 />
               </button>
-
-              <a href="/donate" className="donate-btn">
-                <Heart size={18} />
-                <span>Quyên góp</span>
-              </a>
 
               {isUserMenuOpen && (
                 <>
@@ -231,13 +195,8 @@ export default function Navbar() {
               <Link to="/signup" className="signup-btn">
                 Đăng ký
               </Link>
-              <a href="/donate" className="donate-btn">
-                <Heart size={18} />
-                <span>Quyên góp</span>
-              </a>
             </>
           )}
->>>>>>> 1c55220677df837788aad0117a6783d9363c162f
         </div>
       </div>
     </header>
