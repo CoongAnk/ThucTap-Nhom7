@@ -1,20 +1,74 @@
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { Search, Menu, X, ChevronDown, BookOpen, Microscope, Code, Lightbulb, GraduationCap, Heart } from 'lucide-react';
 import { useState } from 'react';
+=======
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, Menu, X, ChevronDown, BookOpen, Microscope, Code, Lightbulb, GraduationCap, Heart, LogOut, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { getUser, logout as logoutUser } from '../api/auth.api.js';
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 import '../styles/Navbar.css';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
+<<<<<<< HEAD
 
   const exploreItems = [
     { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/math' },
     { icon: <Microscope size={20} />, title: 'Khoa học', desc: 'Vật lý, Hóa học, Sinh học', link: '/science' },
+=======
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  const exploreItems = [
+    { icon: <BookOpen size={20} />, title: 'Toán học', desc: 'Từ cơ bản đến nâng cao', link: '/math' },
+    { icon: <Microscope size={20} />, title: 'Tiếng Anh', desc: 'Tiếng Anh cơ bản đến nâng cao', link: '/english' },
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
     { icon: <Code size={20} />, title: 'Lập trình', desc: 'Web, Python, JavaScript', link: '/programming' },
     { icon: <Lightbulb size={20} />, title: 'Kỹ năng', desc: 'Tư duy phản biện, Sáng tạo', link: '/skills' },
     { icon: <GraduationCap size={20} />, title: 'Giáo viên', desc: 'Tài nguyên cho giáo viên', link: '/teachers' },
   ];
 
+<<<<<<< HEAD
+=======
+  // ✅ Kiểm tra user từ localStorage khi component mount
+  useEffect(() => {
+    const storedUser = getUser();
+    if (storedUser) {
+      setUser(storedUser);
+      console.log('✅ User loaded from localStorage:', storedUser);
+    }
+  }, []);
+
+  // ✅ Lắng nghe event đăng nhập từ Login component
+  useEffect(() => {
+    const handleUserLoggedIn = (event) => {
+      const userData = event.detail;
+      console.log('✅ userLoggedIn event received:', userData);
+      setUser(userData);
+    };
+
+    window.addEventListener('userLoggedIn', handleUserLoggedIn);
+
+    return () => {
+      window.removeEventListener('userLoggedIn', handleUserLoggedIn);
+    };
+  }, []);
+
+  // ✅ Đăng xuất
+  const handleLogout = () => {
+    logoutUser(); // Xóa token, user, v.v. từ localStorage
+    setUser(null);
+    setIsUserMenuOpen(false);
+    setIsMenuOpen(false);
+    console.log('✅ User logged out');
+    navigate('/login');
+  };
+
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
   return (
     <header className="site-header">
       <div className="header-container">
@@ -24,6 +78,10 @@ export default function Navbar() {
           <button 
             className="mobile-menu-btn"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+<<<<<<< HEAD
+=======
+            aria-label="Toggle menu"
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -87,6 +145,7 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className={`header-right ${isMenuOpen ? 'mobile-open' : ''}`}>
+<<<<<<< HEAD
           <Link to="/login" className="nav-link">
             Đăng nhập
           </Link>
@@ -97,6 +156,83 @@ export default function Navbar() {
             <Heart size={18} />
             <span>Quyên góp</span>
           </a>
+=======
+          {user ? (
+            // ✅ User đã đăng nhập - Hiển thị profile menu
+            <div className="user-menu-wrapper">
+              <button 
+                className="user-profile-btn"
+                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                aria-label="User menu"
+              >
+                <div className="user-avatar">
+                  {user.avatarUrl ? (
+                    <img src={user.avatarUrl} alt={user.fullName} />
+                  ) : (
+                    <span className="avatar-initials">
+                      {user.fullName.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                </div>
+                <div className="user-info">
+                  <span className="user-name">{user.fullName}</span>
+                  <span className="user-role">
+                    {user.role === 'student' ? 'Học viên' : user.role === 'teacher' ? 'Giáo viên' : 'Phụ huynh'}
+                  </span>
+                </div>
+                <ChevronDown 
+                  size={18} 
+                  className={`dropdown-icon ${isUserMenuOpen ? 'rotate' : ''}`}
+                />
+              </button>
+
+              {isUserMenuOpen && (
+                <>
+                  <div className="dropdown-overlay" onClick={() => setIsUserMenuOpen(false)}></div>
+                  <div className="user-dropdown">
+                    <Link 
+                      to="/courses" 
+                      className="user-dropdown-item"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      <BookOpen size={18} />
+                      <span>Các khóa học của tôi</span>
+                    </Link>
+                    <Link 
+                      to="/profile" 
+                      className="user-dropdown-item"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      <User size={18} />
+                      <span>Hồ sơ của tôi</span>
+                    </Link>
+                    <button 
+                      className="user-dropdown-item logout-btn"
+                      onClick={handleLogout}
+                    >
+                      <LogOut size={18} />
+                      <span>Đăng xuất</span>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : (
+            // ✅ User chưa đăng nhập - Hiển thị login/signup buttons
+            <>
+              <Link to="/login" className="nav-link">
+                Đăng nhập
+              </Link>
+              <Link to="/signup" className="signup-btn">
+                Đăng ký
+              </Link>
+              <a href="/donate" className="donate-btn">
+                <Heart size={18} />
+                <span>Quyên góp</span>
+              </a>
+            </>
+          )}
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
         </div>
       </div>
     </header>

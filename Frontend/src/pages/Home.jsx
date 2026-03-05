@@ -114,7 +114,11 @@ const Home = () => {
               </p>
 
               <div className="hero-buttons">
+<<<<<<< HEAD
                 <Link to="/signup?role=learner" className="btn btn-primary">
+=======
+                <Link to="/quiz" className="btn btn-primary">
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
                   <Users size={20} />
                   <span>Bắt đầu học ngay</span>
                   <ArrowRight size={18} />

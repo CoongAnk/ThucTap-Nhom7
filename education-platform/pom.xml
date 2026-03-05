@@ -106,6 +106,10 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+<<<<<<< HEAD
+=======
+							<version>1.18.30</version>
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 						</path>
 					</annotationProcessorPaths>
 				</configuration>

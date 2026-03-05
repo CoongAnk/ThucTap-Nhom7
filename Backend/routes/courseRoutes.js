@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
+<<<<<<< HEAD
 const Course = require('../models/Course');
+=======
+const Course = require('../../models/Course');
+>>>>>>> 1c55220677df837788aad0117a6783d9363c162f
 
 // 1. Lấy tất cả khóa học (để hiện ở trang chủ)
 router.get('/', async (req, res) => {
