@@ -11,13 +11,13 @@
 }
 
 .header-container {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  padding: 12px 32px;
-  gap: 20px;
+  padding: 10px 24px;
+  gap: 16px;
 }
 
 /* ========== LEFT SECTION ========== */
@@ -299,18 +299,22 @@
 }
 
 .donate-btn {
+  background: linear-gradient(135deg,#10b981,#059669);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  color: white;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);
+  gap: 6px;
+}
+
+.donate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16,185,129,0.35);
 }
 
 .donate-btn:hover {
@@ -489,22 +493,11 @@
   }
 
   .header-right {
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    padding: 20px;
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 998;
+    display: flex;
+    align-items: center;   /* căn giữa theo chiều dọc */
+    gap: 16px;
+    justify-content: flex-end;
   }
-
   .header-right.mobile-open {
     transform: translateY(0);
     opacity: 1;
@@ -574,10 +567,37 @@
   }
 
   .user-name {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 
   .user-role {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-menu:hover {
+  background: #eef2ff;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }

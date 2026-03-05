@@ -70,10 +70,15 @@ const handleResponse = async <T>(
 export const getQuizDetail = async (
   quizId: number
 ): Promise<any> => {
+
   const token = getAccessToken();
 
-  if (!token) {
-    throw new Error("User not authenticated");
+  const headers: any = {
+    "Content-Type": "application/json",
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
   }
 
   const response = await fetch(`${BASE_URL}/quizzes/${quizId}`, {

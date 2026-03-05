@@ -155,6 +155,11 @@ export default function Navbar() {
                 />
               </button>
 
+              <a href="/donate" className="donate-btn">
+                <Heart size={18} />
+                <span>Quyên góp</span>
+              </a>
+
               {isUserMenuOpen && (
                 <>
                   <div className="dropdown-overlay" onClick={() => setIsUserMenuOpen(false)}></div>
