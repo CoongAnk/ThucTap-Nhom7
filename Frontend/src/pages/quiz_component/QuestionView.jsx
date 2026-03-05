@@ -22,11 +22,12 @@ export const QuestionView = ({
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    setSelectedOptionId(null);
-    setIsChecked(false);
-    setAiFeedback("");
-    setLoadingAI(false);
-  }, [currentQuestionIndex]);
+  const savedAnswer = userAnswers[currentQuestion.id] || null;
+  setSelectedOptionId(savedAnswer);
+  setIsChecked(false);
+  setAiFeedback("");
+  setLoadingAI(false);
+}, [currentQuestionIndex, currentQuestion.id, userAnswers]);
 
   if (!currentQuestion || !currentQuestion.options) {
     return <div>Loading...</div>;

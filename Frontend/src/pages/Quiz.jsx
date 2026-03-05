@@ -71,15 +71,12 @@ export default function Quiz() {
     }
   };
 
-  // ================= CHỌN ĐÁP ÁN =================
-  const handleOptionSelect = (optionId) => {
-    if (!currentQuestion) return;
-
-    setUserAnswers((prev) => ({
-      ...prev,
-      [currentQuestion.id]: optionId,
-    }));
-  };
+  const handleOptionSelect = (questionId, answerId) => {
+  setUserAnswers((prev) => ({
+    ...prev,
+    [questionId]: answerId,
+  }));
+};
 
   // ================= NEXT =================
   const handleNext = async () => {
@@ -99,26 +96,33 @@ export default function Quiz() {
 
   // ================= SUBMIT =================
   const handleSubmit = async () => {
-    try {
-      const formattedAnswers = Object.entries(userAnswers).map(
-        ([questionId, answerId]) => ({
-          questionId: Number(questionId),
-          selectedAnswerIds: [Number(answerId)],
-        })
-      );
+  try {
+    const formattedAnswers = Object.entries(userAnswers).map(
+      ([questionId, answerId]) => ({
+        questionId: Number(questionId),
+        selectedAnswerIds: [Number(answerId)],
+      })
+    );
 
-      const response = await submitQuiz(
-        quizId,
-        formattedAnswers,
-        quiz.questions.length
-      );
+    console.log("🚀 SUBMIT PAYLOAD:");
+    console.log({
+      quizId,
+      answers: formattedAnswers,
+      totalQuestions: quiz.questions.length,
+    });
 
-      setResults(response);
-      setStatus("results");
-    } catch (error) {
-      console.error("Submit quiz error:", error);
-    }
-  };
+    const response = await submitQuiz(
+      quizId,
+      formattedAnswers,
+      quiz.questions.length
+    );
+
+    setResults(response);
+    setStatus("results");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   // ================= RESTART =================
   const handleRestart = () => {
