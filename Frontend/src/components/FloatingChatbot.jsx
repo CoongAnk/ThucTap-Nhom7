@@ -9,6 +9,14 @@ export default function FloatingChatbot() {
   const chatEndRef = useRef(null);
 
   useEffect(() => {
+    if (messages.length === 0) {
+    setMessages([
+      {
+        role: "assistant",
+        content: "Xin chào! Tôi là AI Tutor. Bạn cần hỏi gì về bài học?"
+      }
+    ]);
+  }
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
@@ -21,7 +29,7 @@ export default function FloatingChatbot() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/api/ai/tutor", {
+      const res = await fetch("http://localhost:3000/api/ai/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

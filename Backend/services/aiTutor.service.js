@@ -3,6 +3,7 @@ dotenv.config();
 
 import OpenAI from "openai";
 import khanmigoPrompt from "../prompts/khanmigoPrompt.js";
+import chatTutorPrompt from "../prompts/chatTutorPrompt.js"; 
 import AiMemory from "../models/AiMemory.js";
 
 console.log("OPENROUTER KEY:", process.env.OPENROUTER_API_KEY);
@@ -52,6 +53,25 @@ ${memoryText || "None"}
 
   } catch (error) {
     console.error("OpenRouter Error:", error);
+    throw error;
+  }
+};
+
+export const generateChatReply = async (message) => {
+  try {
+
+    const completion = await openai.chat.completions.create({
+      model: "stepfun/step-3.5-flash:free",
+      messages: [
+        { role: "system", content: chatTutorPrompt },
+        { role: "user", content: message }
+      ]
+    });
+
+    return completion.choices[0].message.content;
+
+  } catch (error) {
+    console.error("Chat AI Error:", error);
     throw error;
   }
 };
