@@ -1,10 +1,13 @@
 // auth/auth.usecase.js
 import { UserModel } from "../models/user.model.js";
 import { hashPassword, comparePassword, generateToken } from "./auth.service.js";
+import { RegisterSchema, LoginSchema } from "./auth.schema.js";
 import { v4 as uuid } from "uuid";
 
 export class AuthUseCase {
-  async register({ email, name, password, role, birthDay }) {
+  async register(payload) {
+    const { email, name, password, birthDay } = RegisterSchema.parse(payload);
+
     const existed = await UserModel.findOne({ email });
     if (existed) throw new Error("Email already exists");
 
@@ -15,14 +18,17 @@ export class AuthUseCase {
       email,
       name,
       password: hashed,
-      role,
+      // Role is never taken from client input to prevent privilege escalation.
+      role: "STUDENT",
       birthDay: new Date(birthDay),
     });
 
     return generateToken(user);
   }
 
-  async login({ email, password }) {
+  async login(payload) {
+    const { email, password } = LoginSchema.parse(payload);
+
     const user = await UserModel.findOne({ email }).select("+password");
     if (!user) throw new Error("Invalid credentials");
 
